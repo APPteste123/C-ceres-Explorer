@@ -1,0 +1,105 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+
+const Home = () => {
+  return (
+    <div className="min-h-screen bg-cover bg-center flex flex-col items-center p-4" style={{ backgroundImage: "url('/caceres.jpg')" }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-xl mt-10">
+        <Button className="w-full py-6 text-lg">Menu</Button>
+        <Button className="w-full py-6 text-lg">Lugares Históricos</Button>
+        <Button className="w-full py-6 text-lg">Pontos Turísticos</Button>
+        <Button className="w-full py-6 text-lg">Um Pouco da História</Button>
+        <Button className="w-full py-6 text-lg">Onde Ir</Button>
+      </div>
+    </div>
+  );
+};
+
+const LugaresHistoricos = () => {
+  const locais = [
+    { nome: "Igreja Matriz de São Luiz", coordenadas: "-16.0725, -57.6819" },
+    { nome: "Casario Histórico de Cáceres", coordenadas: "-16.0738, -57.6823" },
+    { nome: "Forte de Coimbra", coordenadas: "-17.2903, -57.5586" }
+  ];
+  
+  return (
+    <div className="p-4">
+      <h2 className="text-xl font-bold mb-4">Lugares Históricos</h2>
+      <ul>
+        {locais.map((local, index) => (
+          <li key={index} className="mb-2">
+            <a href={`https://www.google.com/maps?q=${local.coordenadas}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
+              {local.nome}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+const PontosTuristicos = () => {
+  const pontos = [
+    { nome: "Catedral São Luiz de Cáceres", coordenadas: "-16.0728, -57.6820" },
+    { nome: "Praia do Daveron", coordenadas: "-16.0754, -57.6863" },
+    { nome: "Sematur", coordenadas: "-16.0741, -57.6812" },
+    { nome: "Praça Barão do Rio Branco", coordenadas: "-16.0750, -57.6805" },
+    { nome: "Marco do Jaurú", coordenadas: "-16.0729, -57.6817" },
+    { nome: "Museu De Antropologia Da Unemat", coordenadas: "-16.0733, -57.6798" }
+  ];
+  
+  return (
+    <div className="p-4">
+      <h2 className="text-xl font-bold mb-4">Pontos Turísticos</h2>
+      <ul>
+        {pontos.map((ponto, index) => (
+          <li key={index} className="mb-2">
+            <a href={`https://www.google.com/maps?q=${ponto.coordenadas}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
+              {ponto.nome}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+const Historia = () => {
+  const historias = [
+    { nome: "Igreja Matriz de São Luiz", descricao: "Construída no século XVIII, a igreja é um dos marcos históricos de Cáceres e representa a influência colonial portuguesa na arquitetura local." },
+    { nome: "Casario Histórico de Cáceres", descricao: "Conjunto de construções do século XIX que retratam o estilo arquitetônico da época e a importância da cidade como centro comercial da região." },
+    { nome: "Forte de Coimbra", descricao: "Construído para defender a fronteira oeste do Brasil, o forte teve um papel fundamental na história militar do país." }
+  ];
+  
+  return (
+    <div className="p-4">
+      <h2 className="text-xl font-bold mb-4">Um Pouco da História</h2>
+      <ul>
+        {historias.map((historia, index) => (
+          <li key={index} className="mb-4">
+            <strong>{historia.nome}</strong>: {historia.descricao}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+const OndeIr = () => {
+  return (
+    <div className="p-4">
+      <h2 className="text-xl font-bold mb-4">Onde Ir</h2>
+      <p>Quer divulgar seu estabelecimento? Anuncie aqui!</p>
+      <form className="mt-4">
+        <input type="text" placeholder="Nome do estabelecimento" className="w-full p-2 border rounded mb-2" />
+        <input type="text" placeholder="Endereço" className="w-full p-2 border rounded mb-2" />
+        <input type="text" placeholder="Contato" className="w-full p-2 border rounded mb-2" />
+        <button type="submit" className="w-full py-2 bg-blue-600 text-white rounded">Enviar</button>
+      </form>
+    </div>
+  );
+};
+
+export default Home;
